@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transness - A space for all people</title>
+    <!-- Fuentes y estilos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <main id="app" class="perfil-trans"> 
+        
+        <div class="marca-agua-fondo">
+            <span data-text="TRANSNESS">TRANSNESS</span>
+            <span data-text="TRANSNESS">TRANSNESS</span>
+            <span data-text="TRANSNESS">TRANSNESS</span>
+            <span data-text="TRANSNESS">TRANSNESS</span>
+            <span data-text="TRANSNESS">TRANSNESS</span>
+            <span data-text="TRANSNESS">TRANSNESS</span>
+        </div>
+
+        <section class="tarjeta-login">
+            <div id="vista-login">
+                <div class="campo">
+                    <label>Email</label>
+                    <input type="email" placeholder="Introduce tu email">
+                </div>
+                <div class="campo">
+                    <label>Password</label>
+                    <input type="password" placeholder="Introduce tu contraseña">
+                </div>
+                <button class="btn-sign-in">Sign In</button>
+                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">
+                    ¿No tienes cuenta? <a href="#" id="link-a-registro" style="color: #797070; font-weight: 700;">Regístrate</a>
+                </p>
+            </div>
+
+            <div id="vista-registro" style="display: none;">
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Tu nombre">
+                </div>
+                <div class="campo">
+                    <label>Email</label>
+                    <input type="email" placeholder="Tu email">
+                </div>
+                <div class="campo">
+                    <label>Password</label>
+                    <input type="password" id="reg-pass" placeholder="Crea una contraseña">
+                    <span id="mensaje-requisitos" class="requisitos-pass">mínimo 8 caracteres...</span>
+                </div>
+                <div class="campo">
+                    <label>Confirmar Password</label>
+                    <input type="password" id="reg-pass-confirm" placeholder="Repite tu contraseña">
+                </div>
+                <button class="btn-sign-in" id="btn-registrar-usuario">Crear Cuenta</button>
+                <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">
+                    ¿Ya tienes cuenta? <a href="#" id="link-a-login" style="color: #797070; font-weight: 700;">Inicia sesión</a>
+                </p>
+            </div>
+
+            <div id="vista-detalles" style="display: none;">
+                <h3 style="text-align: center; margin-bottom: 20px;">¡Casi listo!</h3>
+                <div class="campo">
+                    <label>¿Cómo te llamas?</label>
+                    <input type="text" placeholder="Tu nombre elegido">
+                </div>
+                <div class="campo">
+                    <label>Mis pronombres son:</label>
+                    <select class="custom-select" id="selector-pronombres">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="ella">Ella (She/Her)</option>
+                        <option value="el">Él (He/Him)</option>
+                        <option value="elle">Elle (They/Them)</option>
+                        <option value="ella-elle">Ella / Elle</option>
+                        <option value="el-elle">Él / Elle</option>
+                        <option value="fluido">Cualquiera / Fluido</option>
+                        <option value="preguntar">Preguntar</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Fecha de nacimiento</label>
+                    <input type="date">
+                </div>
+                <button id="btn-finalizar" class="btn-sign-in">Empezar aventura</button>
+            </div>
+
+            <div class="separador"><span>O continúa con</span></div>
+
+            <div class="social-grid">
+                <button id="btn-google" class="btn-social">
+                    <img src="google_logo_icon_147282.png" alt="Google">
+                </button>
+                <button id="btn-apple" class="btn-social">
+                    <img src="social_apple_mac_25.png" alt="Apple">
+                </button>
+            </div>
+        </section>
+
+        <div id="vista-dashboard" style="display: none; background: white; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 500px; margin: 20px auto; position: relative; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <div id="avatar-usuario" style="width: 80px; height: 80px; border-radius: 50%; background: #ddd; margin: 0 auto 15px; overflow: hidden; border: 3px solid #fff;">
+                <img src="" id="foto-perfil" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+            </div>
+            <h2 id="saludo-usuario" style="color: #333;">Hola</h2>
+            <div class="grid-dashboard" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px;">👥 Comunidad</div>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px;">📍 Recursos</div>
+            </div>
+            <div style="width: 80%; margin: 0 auto 25px auto;">
+    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #718096; margin-bottom: 5px;">
+        <span>Perfil completado</span>
+        <span id="porcentaje-texto">70%</span>
+    </div>
+    <div style="width: 100%; height: 8px; background: #edf2f7; border-radius: 10px; overflow: hidden;">
+        <div id="barra-color" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffafbd, #2193b0); transition: width 1.5s ease-in-out;"></div>
+    </div>
+</div>
+            
+            <button onclick="location.reload()" style="margin-top: 20px; color: #999; border: none; background: none; cursor: pointer;">Cerrar sesión</button>
+        </div>
+
+        <div class="acceso-biometrico">
+            <img src="logo transness.png" alt="Icono Transness" class="icono-biometrico">
+        </div>
+
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>

@@ -1,0 +1,408 @@
+/*
+    estilos.css
+    Hoja de estilos principal de la aplicación. Aquí se definen
+    variables de colores, fondos por perfil, diseños de formularios
+    y cualquier otro detalle visual.
+*/
+/*
+   Variables globales: define colores y valores reutilizables.
+   Cambiar aquí afecta a todo el diseño sin tocar reglas individuales.
+   Están agrupadas por perfil (Trans, No binarie) y por UI (botones, texto).
+*/
+:root {
+    /* --- TUS COLORES ORIGINALES --- */
+    /* Perfil Trans */
+    --trans-azul: #E6EBF5;
+    --trans-rosa: #FEF0FC;
+    --trans-blanco: #FFFFFF;
+
+    /* Perfil No Binarie */
+    --nb-amarillo: #FEF9DF;
+    --nb-blanco: #FFFFFF;
+    --nb-violeta: #EADFFE;
+    --nb-gris: #797070;
+    
+    /* Variables de UI */
+    --btn-color: #DDE4F0; 
+    --texto-label: #797070;
+    --texto-oscuro: #333333;
+}
+
+/*
+   Estilo base del <body>: elimina margen por defecto, configura tipografía
+   y evita scroll (overflow hidden) para mantener la tarjeta centrada.
+*/
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+/*
+   Lógica de color de fondo según perfil activo.
+   Se cambia la clase en #app para alternar entre trans y no binarie.
+*/
+/* Fondo para el perfil trans con gradiente de colores */
+.perfil-trans {
+    background: linear-gradient(180deg, var(--trans-azul) 0%, var(--trans-rosa) 25%, var(--trans-blanco) 50%, var(--trans-rosa) 75%, var(--trans-azul) 100%);
+}
+
+/* Fondo para el perfil no binario con gradiente de colores */
+.perfil-nb {
+    background: linear-gradient(180deg, var(--nb-amarillo) 25%, var(--nb-blanco) 57%, var(--nb-violeta) 75%, var(--nb-gris) 100%);
+}
+
+/* Contenedor principal de la aplicación */
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.8s ease-in-out; /* Cambio suave de colores */
+}
+
+/* --- ELEMENTOS DEL DISEÑO FIGMA --- */
+/* Marca de agua en el fondo con texto repetido */
+.marca-agua-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0.12; /* Un poco más sutil */
+    font-family: 'Inter', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #96B0E9;
+    pointer-events: none;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+/* Estilos para cada span dentro de la marca de agua */
+.marca-agua-fondo span {
+    position: relative;
+    display: block;
+}
+
+/* Efecto de eco o sombra para el texto de la marca de agua */
+.marca-agua-fondo span::after {
+    content: attr(data-text); /* Copia el texto automáticamente */
+    position: absolute;
+    left: 8px;  /* Desfase horizontal */
+    top: 4px;   /* Desfase vertical */
+    color: #DB88D2; /* Un tono rosado para que vibre con el azul */
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/*
+   Contenedor blanco central que alberga los formularios de login y registro.
+   Tiene borde redondeado, sombra y separa visualmente del fondo de perfil.
+*/
+.tarjeta-login {
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/*
+   Clase utilitaria aplicada cuando queremos ocultar una tarjeta.
+   Ajusta opacidad, desactiva clics y agrega desplazamiento suave.
+*/
+.tarjeta-oculta {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(20px); /* Efecto de caída suave */
+}
+/*
+   Etiquetas (<label>) de los campos de formulario: tamaño, color y espaciado.
+*/
+label {
+    display: block;
+    color: var(--texto-label);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/*
+   Inputs de texto básicos: ancho completo, relleno interno, borde redondeado
+   y color de fuente. Garantiza apariencia consistente en todos los inputs.
+*/
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #DDE4F0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: white; /* Aseguramos fondo blanco */
+    color: var(--texto-oscuro); /* Texto en gris oscuro/negro */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*
+   Contenedor de cada fila de formulario. Alinea label e input en columna
+   y separa verticalmente cada campo del siguiente para mantener claridad.
+*/
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 12px; /* Espacio entre un campo y el siguiente */
+}
+
+/*
+   Ajustes específicos para la etiqueta dentro de un `.campo`: fuente más
+   pesada, tamaño levemente menor y separación adicional.
+*/
+.campo label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    color: var(--texto-label);
+}
+
+/*
+   Refuerzo de estilos para inputs, usando !important en caso de que otras
+   reglas los modifiquen. Mantiene fondo blanco y texto oscuro.
+*/
+input {
+    background-color: white !important;
+    color: #333 !important;
+    border: 1px solid #DDE4F0;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*
+   Enlace «¿Olvidaste tu contraseña?» situado debajo del botón de login.
+   Texto pequeño, gris y sin subrayado; se justifica para ocupar todo el ancho.
+*/
+.forgot-password {
+    display: block;
+    text-align: justify;
+    color: var(--texto-label); /* Usamos el color gris de tus etiquetas */
+    font-size: 0.7rem;          
+    text-decoration: none;      /* Quita el subrayado si prefieres que sea limpio */
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif; /* Aseguramos que use la nueva fuente */
+}
+
+/*
+   Hover para el enlace de contraseña olvidada: subrayado y cambio de color.
+*/
+.forgot-password:hover {
+    text-decoration: underline;
+    color: var(--texto-oscuro);
+}
+/*
+   Botón principal de acciones (sign in/crear cuenta). Se expande al 100% de
+   la tarjeta y usa color de UI definido en variables.
+*/
+.btn-sign-in {
+    width: 100%;
+    background-color: var(--btn-color);
+    color: #4A5568;
+    padding: 14px; /* Un pelín más de cuerpo */
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    margin-top: 20px; /* Separación constante del input superior */
+    display: block;
+}
+
+.btn-sign-in {
+    min-height: 50px;
+    padding: 12px 20px;
+    white-space: normal; /* Permite que el texto baje si es muy largo */
+}
+/*
+   Texto pequeño que indica los requisitos de la contraseña en el formulario
+   de registro. Se muestra justo debajo del campo de contraseña.
+*/
+.requisitos-pass {
+    font-size: 0.6rem; /* Tamaño mini */
+    color: #797070;    /* El gris de tus etiquetas */
+    margin-top: 4px;   /* Separación del input */
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0.8;      /* Un toque sutil */
+    display: block;    /* Para que se coloque debajo */
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #DDE4F0;
+    border-radius: 8px;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #4A5568;
+    cursor: pointer;
+    appearance: none; /* Quita el estilo por defecto del sistema */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23797070" d="M0 3l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+/* --- BOTONES SOCIALES (Google/Apple) --- */
+/*
+   Línea horizontal con texto centrado usada para separar formularios de
+   los botones de inicio social (Google/Apple).
+*/
+.separador {
+    text-align: center;
+    border-bottom: 1px solid #E6EBF5;
+    line-height: 0.1em;
+    margin: 10px 0;
+}
+
+/*
+   Estilo del span dentro del separador; le da fondo blanco para que el texto
+   aparezca sólido sobre la línea.
+*/
+.separador span {
+    background:#fff;
+    padding: 0 10px;
+    color: var(--texto-label);
+    font-size: 0.8rem;
+}
+
+/*
+   Contenedor en cuadrícula que coloca dos botones sociales lado a lado con
+   un pequeño espacio entre ellos.
+*/
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/*
+   Ajustes de las imágenes de Google/Apple para que mantengan proporción y
+   no se distorsionen dentro del botón.
+*/
+ .btn-social img {
+        image-rendering: pixelated;
+        max-height: 75px;
+        max-width: 100px;
+        width: 24px;
+        height: 24px;
+}
+
+/*
+   Estilo general de los botones sociales: fondo claro, borde, espaciado y
+   tamaño uniforme que ocupa la mitad del ancho del grid.
+*/
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;      /* Espacio entre el logo y el texto */
+    background: #F8F9FA;
+    border: 1px solid #DDE4F0;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 100%;    /* Para que ocupen su mitad del grid */
+}
+
+/*
+   Botón redondo que aparece fijo en la parte inferior. Al hacer clic muestra
+   u oculta la tarjeta y alterna el perfil de color (trans/nb).
+*/
+/* Botón circular para acceso biométrico en la parte inferior */
+.acceso-biometrico {
+    position: absolute;
+    bottom: 40px; /* Separación del borde inferior */
+    width: 70px;  /* Tamaño del círculo */
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    
+    /* Centrado total de la imagen */
+    display: flex;
+    align-items: center;    /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+    cursor: pointer;
+    overflow: hidden; /* Asegura que nada sobresalga del círculo */
+}
+
+/*
+   Estilos del icono dentro del botón biométrico: tamaño fijo, transparencia
+   y evita que otras reglas estiren la imagen.
+*/
+.icono-biometrico {
+    /* CAMBIO IMPORTANTE: Le damos un tamaño fijo pequeño */
+    width: 80px;  /* Ajusta este valor si lo quieres más grande o pequeño */
+    height: auto; /* Mantiene la proporción */
+    
+    /* Evitamos que 'width: 100%' de otras reglas lo ensanche */
+    max-width: none !important; 
+    
+    opacity: 0.8; /* Un toque de transparencia para que sea elegante */
+}
+/* Animación de desvanecimiento para la salida */
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+/* Animación de entrada para el Dashboard */
+.fade-in-dashboard {
+    display: block !important;
+    animation: slideUp 0.8s forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#barra-color {
+    box-shadow: 0 0 10px rgba(33, 147, 176, 0.3);
+    position: relative;
+}
+
+/* Efecto de brillo pasando por la barra */
+#barra-color::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    animation: brilloBarra 2s infinite;
+}
+
+@keyframes brilloBarra {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
