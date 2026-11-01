@@ -3,17 +3,114 @@
 <head>
     <!-- Metadatos básicos de la página -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Transness - A space for all people</title>
     <!-- Fuentes y estilos externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
+
+    <!-- PWA: permite instalar la app en el móvil -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FAFAF8">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Transness">
 </head>
 <body>
-    <main id="app" class="perfil-trans"> 
-        
+    <main id="app" class="perfil-trans">
+
+        <!-- Iconos de línea (sprite). Se usan con: <svg class="icono"><use href="#i-nombre"/></svg> -->
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <symbol id="i-pencil" viewBox="0 0 24 24">
+                <path d="M4 20l1.2-4.4L16.6 4.2a2.2 2.2 0 013.2 3.2L8.4 18.8 4 20z"/>
+                <path d="M14.5 6.3l3.2 3.2"/>
+            </symbol>
+            <symbol id="i-users" viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3.2"/>
+                <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+                <path d="M16 5.2a3 3 0 010 5.6"/>
+                <path d="M18 14.3c1.7.8 3 2.7 3 5.7"/>
+            </symbol>
+            <symbol id="i-user" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="3.6"/>
+                <path d="M4.5 20.5c0-4 3.4-6.8 7.5-6.8s7.5 2.8 7.5 6.8"/>
+            </symbol>
+            <symbol id="i-pin" viewBox="0 0 24 24">
+                <path d="M12 21s-6.5-5.4-6.5-10.5a6.5 6.5 0 0113 0C18.5 15.6 12 21 12 21z"/>
+                <circle cx="12" cy="10.5" r="2.3"/>
+            </symbol>
+            <symbol id="i-plus-circle" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 8v8"/>
+                <path d="M8 12h8"/>
+            </symbol>
+            <symbol id="i-plus" viewBox="0 0 24 24">
+                <path d="M12 5v14"/>
+                <path d="M5 12h14"/>
+            </symbol>
+            <symbol id="i-calendar" viewBox="0 0 24 24">
+                <rect x="4" y="5.5" width="16" height="14.5" rx="2.2"/>
+                <path d="M4 10h16"/>
+                <path d="M8.5 3.5v4"/>
+                <path d="M15.5 3.5v4"/>
+            </symbol>
+            <symbol id="i-arrow-left" viewBox="0 0 24 24">
+                <path d="M19 12H5"/>
+                <path d="M11 6l-6 6 6 6"/>
+            </symbol>
+            <symbol id="i-chevron-left" viewBox="0 0 24 24">
+                <path d="M14.5 6l-6 6 6 6"/>
+            </symbol>
+            <symbol id="i-chevron-right" viewBox="0 0 24 24">
+                <path d="M9.5 6l6 6-6 6"/>
+            </symbol>
+            <symbol id="i-check" viewBox="0 0 24 24">
+                <path d="M5 12.5l4.5 4.5L19 7.5"/>
+            </symbol>
+            <symbol id="i-trash" viewBox="0 0 24 24">
+                <path d="M4 7h16"/>
+                <path d="M9.5 7V4.5h5V7"/>
+                <path d="M6.5 7l.9 12.5h9.2l.9-12.5"/>
+            </symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2"/>
+                <path d="M4 7l8 6 8-6"/>
+            </symbol>
+            <symbol id="i-key" viewBox="0 0 24 24">
+                <circle cx="8" cy="15" r="3.8"/>
+                <path d="M10.8 12.2L19 4"/>
+                <path d="M16 7l2.5 2.5"/>
+            </symbol>
+            <symbol id="i-sliders" viewBox="0 0 24 24">
+                <path d="M4 7h9"/>
+                <path d="M17 7h3"/>
+                <circle cx="15" cy="7" r="2"/>
+                <path d="M4 17h3"/>
+                <path d="M11 17h9"/>
+                <circle cx="9" cy="17" r="2"/>
+            </symbol>
+            <symbol id="i-download" viewBox="0 0 24 24">
+                <path d="M12 4v11"/>
+                <path d="M7.5 11l4.5 4.5 4.5-4.5"/>
+                <path d="M5 19.5h14"/>
+            </symbol>
+            <symbol id="i-life-buoy" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="12" cy="12" r="3.6"/>
+                <path d="M5.6 5.6l3.9 3.9"/>
+                <path d="M14.5 14.5l3.9 3.9"/>
+                <path d="M18.4 5.6l-3.9 3.9"/>
+                <path d="M9.5 14.5l-3.9 3.9"/>
+            </symbol>
+            <symbol id="i-logout" viewBox="0 0 24 24">
+                <path d="M9 4H5.5A1.5 1.5 0 004 5.5v13A1.5 1.5 0 005.5 20H9"/>
+                <path d="M16 8l4 4-4 4"/>
+                <path d="M20 12H9"/>
+            </symbol>
+        </svg>
+
         <div class="marca-agua-fondo">
             <span data-text="TRANSNESS">TRANSNESS</span>
             <span data-text="TRANSNESS">TRANSNESS</span>
@@ -23,40 +120,46 @@
             <span data-text="TRANSNESS">TRANSNESS</span>
         </div>
 
+        <!-- ============================================================
+             ACCESO: login, registro y detalles de perfil
+             ============================================================ -->
         <section class="tarjeta-login">
+
+            <!-- LOGIN -->
             <div id="vista-login">
                 <div class="campo">
-                    <label>Email</label>
-                    <input type="email" placeholder="Introduce tu email">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Introduce tu email" autocomplete="email">
                 </div>
                 <div class="campo">
-                    <label>Password</label>
-                    <input type="password" placeholder="Introduce tu contraseña">
+                    <label for="login-pass">Password</label>
+                    <input type="password" id="login-pass" placeholder="Introduce tu contraseña" autocomplete="current-password">
                 </div>
-                <button class="btn-sign-in">Sign In</button>
-                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                <button id="btn-login" class="btn-sign-in">Sign In</button>
+                <a href="#" id="link-olvide" class="forgot-password">¿Olvidaste tu contraseña?</a>
                 <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">
                     ¿No tienes cuenta? <a href="#" id="link-a-registro" style="color: #797070; font-weight: 700;">Regístrate</a>
                 </p>
             </div>
 
+            <!-- REGISTRO -->
             <div id="vista-registro" style="display: none;">
                 <div class="campo">
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Tu nombre">
+                    <label for="reg-nombre">Nombre</label>
+                    <input type="text" id="reg-nombre" placeholder="Tu nombre" autocomplete="name">
                 </div>
                 <div class="campo">
-                    <label>Email</label>
-                    <input type="email" placeholder="Tu email">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="Tu email" autocomplete="email">
                 </div>
                 <div class="campo">
-                    <label>Password</label>
-                    <input type="password" id="reg-pass" placeholder="Crea una contraseña">
+                    <label for="reg-pass">Password</label>
+                    <input type="password" id="reg-pass" placeholder="Crea una contraseña" autocomplete="new-password">
                     <span id="mensaje-requisitos" class="requisitos-pass">mínimo 8 caracteres...</span>
                 </div>
                 <div class="campo">
-                    <label>Confirmar Password</label>
-                    <input type="password" id="reg-pass-confirm" placeholder="Repite tu contraseña">
+                    <label for="reg-pass-confirm">Confirmar Password</label>
+                    <input type="password" id="reg-pass-confirm" placeholder="Repite tu contraseña" autocomplete="new-password">
                 </div>
                 <button class="btn-sign-in" id="btn-registrar-usuario">Crear Cuenta</button>
                 <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">
@@ -64,14 +167,15 @@
                 </p>
             </div>
 
+            <!-- DETALLES DE PERFIL -->
             <div id="vista-detalles" style="display: none;">
                 <h3 style="text-align: center; margin-bottom: 20px;">¡Casi listo!</h3>
                 <div class="campo">
-                    <label>¿Cómo te llamas?</label>
-                    <input type="text" placeholder="Tu nombre elegido">
+                    <label for="det-nombre">¿Cómo te llamas?</label>
+                    <input type="text" id="det-nombre" placeholder="Tu nombre elegido">
                 </div>
                 <div class="campo">
-                    <label>Mis pronombres son:</label>
+                    <label for="selector-pronombres">Mis pronombres son:</label>
                     <select class="custom-select" id="selector-pronombres">
                         <option value="" disabled selected>Selecciona una opción</option>
                         <option value="ella">Ella (She/Her)</option>
@@ -84,48 +188,240 @@
                     </select>
                 </div>
                 <div class="campo">
-                    <label>Fecha de nacimiento</label>
-                    <input type="date">
+                    <label for="selector-experiencia">Mi experiencia (cambia el color de fondo)</label>
+                    <select class="custom-select" id="selector-experiencia">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="mtf">MTF</option>
+                        <option value="ftm">FTM</option>
+                        <option value="nb">NB</option>
+                        <option value="neutro">Prefiero no indicarlo</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="det-fecha">Fecha de nacimiento (opcional)</label>
+                    <input type="date" id="det-fecha">
                 </div>
                 <button id="btn-finalizar" class="btn-sign-in">Empezar aventura</button>
             </div>
 
+            <!-- Mensajes de error (se rellena desde app.js) -->
+            <p id="mensaje-error" class="mensaje-error" role="alert" hidden></p>
+
             <div class="separador"><span>O continúa con</span></div>
 
             <div class="social-grid">
-                <button id="btn-google" class="btn-social">
+                <button id="btn-google" class="btn-social" type="button" aria-label="Continuar con Google">
                     <img src="google_logo_icon_147282.png" alt="Google">
                 </button>
-                <button id="btn-apple" class="btn-social">
+                <!-- Apple requiere cuenta de pago de Apple Developer: desactivado en el prototipo -->
+                <button id="btn-apple" class="btn-social" type="button" disabled title="Próximamente" aria-label="Continuar con Apple (próximamente)">
                     <img src="social_apple_mac_25.png" alt="Apple">
                 </button>
             </div>
         </section>
 
-        <div id="vista-dashboard" style="display: none; background: white; padding: 30px; border-radius: 20px; text-align: center; width: 90%; max-width: 500px; margin: 20px auto; position: relative; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-            <div id="avatar-usuario" style="width: 80px; height: 80px; border-radius: 50%; background: #ddd; margin: 0 auto 15px; overflow: hidden; border: 3px solid #fff;">
-                <img src="" id="foto-perfil" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+        <!-- ============================================================
+             APP: pantallas + menú inferior
+             ============================================================ -->
+        <div id="shell" class="shell" style="display: none;">
+
+            <header class="shell-cabecera">
+                <h1 id="shell-titulo">Hoy</h1>
+            </header>
+
+            <div id="shell-contenido" class="shell-contenido">
+
+                <!-- HOY: registro del día actual -->
+                <section id="pantalla-hoy" class="pantalla">
+                    <div id="hoy-contenido"></div>
+                </section>
+
+                <!-- CALENDARIO: ver registros anteriores o registrar hoy -->
+                <section id="pantalla-calendario" class="pantalla" hidden>
+                    <div id="cal-contenedor"></div>
+                    <div id="cal-dia" class="panel-dia"></div>
+                </section>
+
+                <!-- COMUNIDAD -->
+                <section id="pantalla-comunidad" class="pantalla" hidden>
+                    <p class="nota">Un espacio para conectar con otras personas, con normas claras y moderación.</p>
+                    <div class="tarjeta-opcion tarjeta-opcion-apagada">
+                        <svg class="icono"><use href="#i-users"/></svg>
+                        <div>
+                            <strong>Muro de apoyo</strong>
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <button id="btn-ir-recursos" class="tarjeta-opcion" type="button">
+                        <svg class="icono"><use href="#i-pin"/></svg>
+                        <div>
+                            <strong>Recursos de ayuda</strong>
+                            <span>Teléfonos, servicios y asociaciones</span>
+                        </div>
+                    </button>
+                </section>
+
+                <!-- RECURSOS (se abre desde Comunidad) -->
+                <section id="pantalla-recursos" class="pantalla" hidden>
+                    <button id="btn-recursos-volver" class="btn-volver" type="button"><svg class="icono"><use href="#i-arrow-left"/></svg>Volver</button>
+                    <div id="recursos-filtros" class="recursos-filtros" role="group" aria-label="Filtrar por categoría"></div>
+                    <div id="recursos-lista" class="recursos-lista" aria-live="polite"></div>
+                    <p class="recursos-aviso">Comprueba los datos antes de contactar: pueden haber cambiado. Si estás en peligro inmediato, llama al 112.</p>
+                </section>
+
+                <!-- PERFIL Y AJUSTES -->
+                <section id="pantalla-perfil" class="pantalla" hidden>
+
+                    <div class="perfil-cabecera">
+                        <div id="avatar-usuario" class="avatar">
+                            <img src="" id="foto-perfil" alt="Foto de perfil" hidden>
+                            <span id="avatar-inicial" class="avatar-inicial"></span>
+                        </div>
+                        <div>
+                            <h2 id="perfil-saludo"></h2>
+                            <p id="perfil-email-texto" class="nota"></p>
+                        </div>
+                    </div>
+
+                    <div class="progreso">
+                        <div class="progreso-textos">
+                            <span>Perfil completado</span>
+                            <span id="porcentaje-texto">0%</span>
+                        </div>
+                        <div class="progreso-pista">
+                            <div id="barra-color"></div>
+                        </div>
+                    </div>
+
+                    <!-- Datos personales -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-user"/></svg>Datos personales</summary>
+                        <div class="ajuste-cuerpo">
+                            <div class="campo">
+                                <label for="perfil-nombre">¿Cómo te llamas?</label>
+                                <input type="text" id="perfil-nombre" placeholder="Tu nombre elegido">
+                            </div>
+                            <div class="campo">
+                                <label for="perfil-pronombres">Mis pronombres son:</label>
+                                <select class="custom-select" id="perfil-pronombres">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="perfil-experiencia">Mi experiencia (cambia el color de fondo)</label>
+                                <select class="custom-select" id="perfil-experiencia">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="perfil-fecha">Fecha de nacimiento (opcional)</label>
+                                <input type="date" id="perfil-fecha">
+                            </div>
+                            <p id="aviso-perfil" class="mensaje-error" role="alert" hidden></p>
+                            <button id="btn-perfil-guardar" class="btn-sign-in btn-compacto" type="button">Guardar cambios</button>
+                        </div>
+                    </details>
+
+                    <!-- Personalizar registro -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-sliders"/></svg>Personalizar el registro</summary>
+                        <div class="ajuste-cuerpo" id="ajustes-registro"></div>
+                    </details>
+
+                    <!-- Cambiar email -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-mail"/></svg>Cambiar email</summary>
+                        <div class="ajuste-cuerpo">
+                            <p id="email-nota-google" class="nota" hidden>Tu cuenta usa Google: el email lo gestiona tu cuenta de Google.</p>
+                            <div id="email-form">
+                                <div class="campo">
+                                    <label for="email-nuevo">Nuevo email</label>
+                                    <input type="email" id="email-nuevo" placeholder="nuevo@email.com" autocomplete="email">
+                                </div>
+                                <div class="campo">
+                                    <label for="email-pass">Contraseña actual</label>
+                                    <input type="password" id="email-pass" placeholder="Tu contraseña" autocomplete="current-password">
+                                </div>
+                                <p class="nota">Te enviaremos un enlace de verificación al nuevo email. El cambio se aplica cuando lo confirmes.</p>
+                                <p id="aviso-email" class="mensaje-error" role="alert" hidden></p>
+                                <button id="btn-email-cambiar" class="btn-sign-in btn-compacto" type="button">Cambiar email</button>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Cambiar contraseña -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-key"/></svg>Cambiar contraseña</summary>
+                        <div class="ajuste-cuerpo">
+                            <p id="pass-nota-google" class="nota" hidden>Tu cuenta usa Google: no tiene contraseña en Transness.</p>
+                            <div id="pass-form">
+                                <div class="campo">
+                                    <label for="pass-actual">Contraseña actual</label>
+                                    <input type="password" id="pass-actual" autocomplete="current-password">
+                                </div>
+                                <div class="campo">
+                                    <label for="pass-nueva">Nueva contraseña</label>
+                                    <input type="password" id="pass-nueva" autocomplete="new-password">
+                                    <span class="requisitos-pass">Mínimo 8 caracteres, una mayúscula y un carácter especial</span>
+                                </div>
+                                <div class="campo">
+                                    <label for="pass-confirmar">Repite la nueva contraseña</label>
+                                    <input type="password" id="pass-confirmar" autocomplete="new-password">
+                                </div>
+                                <p id="aviso-pass" class="mensaje-error" role="alert" hidden></p>
+                                <button id="btn-pass-cambiar" class="btn-sign-in btn-compacto" type="button">Cambiar contraseña</button>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Mis datos -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-download"/></svg>Mis datos</summary>
+                        <div class="ajuste-cuerpo">
+                            <p class="nota">Tus registros solo se guardan en este dispositivo. Descarga una copia para no perderlos si borras los datos del navegador o cambias de móvil.</p>
+                            <button id="btn-exportar" class="btn-sign-in btn-compacto" type="button">Descargar mis registros</button>
+                        </div>
+                    </details>
+
+                    <!-- Soporte -->
+                    <details class="ajuste">
+                        <summary><svg class="icono"><use href="#i-life-buoy"/></svg>Soporte</summary>
+                        <div class="ajuste-cuerpo">
+                            <p class="nota">¿Algo no funciona o tienes una sugerencia? Escríbenos.</p>
+                            <p id="aviso-soporte" class="mensaje-error" role="alert" hidden></p>
+                            <button id="btn-soporte" class="btn-sign-in btn-compacto" type="button">Contactar con soporte</button>
+                        </div>
+                    </details>
+
+                    <button id="btn-logout" class="btn-texto btn-logout" type="button"><svg class="icono"><use href="#i-logout"/></svg>Cerrar sesión</button>
+
+                    <!-- Eliminar cuenta -->
+                    <details class="ajuste ajuste-peligro">
+                        <summary><svg class="icono"><use href="#i-trash"/></svg>Eliminar mi cuenta</summary>
+                        <div class="ajuste-cuerpo">
+                            <p class="nota">Se borrarán tu perfil, tu cuenta y los registros guardados en este dispositivo. No se puede deshacer.</p>
+                            <div class="campo" id="campo-pass-borrado" style="display: none;">
+                                <label for="eliminar-pass">Confirma tu contraseña</label>
+                                <input type="password" id="eliminar-pass" placeholder="Tu contraseña actual" autocomplete="current-password">
+                            </div>
+                            <p id="aviso-eliminar" class="mensaje-error" role="alert" hidden></p>
+                            <button id="btn-eliminar-cuenta" class="btn-peligro" type="button">Eliminar mi cuenta</button>
+                        </div>
+                    </details>
+                </section>
             </div>
-            <h2 id="saludo-usuario" style="color: #333;">Hola</h2>
-            <div class="grid-dashboard" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px;">👥 Comunidad</div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px;">📍 Recursos</div>
-            </div>
-            <div style="width: 80%; margin: 0 auto 25px auto;">
-    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #718096; margin-bottom: 5px;">
-        <span>Perfil completado</span>
-        <span id="porcentaje-texto">70%</span>
-    </div>
-    <div style="width: 100%; height: 8px; background: #edf2f7; border-radius: 10px; overflow: hidden;">
-        <div id="barra-color" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ffafbd, #2193b0); transition: width 1.5s ease-in-out;"></div>
-    </div>
-</div>
-            
-            <button onclick="location.reload()" style="margin-top: 20px; color: #999; border: none; background: none; cursor: pointer;">Cerrar sesión</button>
+
+            <!-- MENÚ INFERIOR -->
+            <nav class="nav-inferior" aria-label="Navegación principal">
+                <button type="button" class="nav-item" data-pantalla="hoy"><svg class="icono"><use href="#i-plus-circle"/></svg><span>Hoy</span></button>
+                <button type="button" class="nav-item" data-pantalla="calendario"><svg class="icono"><use href="#i-calendar"/></svg><span>Calendario</span></button>
+                <button type="button" class="nav-item" data-pantalla="comunidad"><svg class="icono"><use href="#i-users"/></svg><span>Comunidad</span></button>
+                <button type="button" class="nav-item" data-pantalla="perfil"><svg class="icono"><use href="#i-user"/></svg><span>Perfil</span></button>
+            </nav>
         </div>
 
         <div class="acceso-biometrico">
-            <img src="logo transness.png" alt="Icono Transness" class="icono-biometrico">
+            <img src="logo%20transness.png" alt="Icono Transness" class="icono-biometrico">
         </div>
 
     </main>
@@ -133,5 +429,17 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script src="app.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/registro.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Registro del service worker (funcionamiento sin conexión e instalación)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch((e) => console.error('SW:', e));
+            });
+        }
+    </script>
 </body>
+</html>

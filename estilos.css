@@ -406,3 +406,947 @@ input {
     from { transform: translateX(-100%); }
     to { transform: translateX(100%); }
 }
+/* --- AÑADIDOS: mensajes de error y botón desactivado --- */
+.mensaje-error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #FDECEC;
+    color: #B3261E;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.mensaje-error[hidden] {
+    display: none;
+}
+
+.btn-social:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-sign-in:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Transición suave al ocultar/mostrar la tarjeta con el botón del logo */
+.tarjeta-login {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* --- RECURSOS --- */
+.tile-dashboard {
+    background: #f8f9fa;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.tile-dashboard:hover {
+    background: #eef1f6;
+    transform: translateY(-1px);
+}
+
+.panel-recursos {
+    position: relative;
+    z-index: 1000;
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    margin: auto;
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    animation: slideUp 0.5s forwards;
+}
+
+.recursos-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.recursos-cabecera h2 {
+    margin: 0;
+    color: var(--texto-oscuro);
+    font-size: 1.3rem;
+}
+
+.btn-volver {
+    border: none;
+    background: var(--btn-color);
+    color: #4A5568;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.recursos-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.chip-filtro {
+    border: 1px solid #DDE4F0;
+    background: white;
+    color: #4A5568;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+.chip-filtro.activo {
+    background: var(--btn-color);
+    font-weight: 700;
+}
+
+.recursos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+.tarjeta-recurso {
+    border: 1px solid #E6EBF5;
+    border-radius: 12px;
+    padding: 14px;
+    background: #FCFDFE;
+}
+.tarjeta-recurso h3 {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+    color: var(--texto-oscuro);
+}
+.recurso-meta {
+    font-size: 0.7rem;
+    color: var(--texto-label);
+    margin-bottom: 8px;
+}
+.recurso-desc {
+    font-size: 0.82rem;
+    color: #4A5568;
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+.recurso-dato {
+    font-size: 0.78rem;
+    color: #4A5568;
+    margin: 2px 0;
+}
+.recurso-dato a {
+    color: #4A5568;
+    font-weight: 600;
+}
+.recurso-por-confirmar {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #FEF9DF;
+    color: #797070;
+    font-size: 0.68rem;
+}
+.recursos-aviso {
+    margin: 16px 0 0;
+    font-size: 0.7rem;
+    color: var(--texto-label);
+    text-align: center;
+}
+.recursos-vacio {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--texto-label);
+}
+
+/* --- AVATAR CON INICIAL (cuando no hay foto) --- */
+.avatar-inicial {
+    display: block;
+    color: #4A4A4F;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* --- PERFIL: editar y eliminar cuenta --- */
+.btn-editar-perfil {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 0.85rem;
+}
+
+#vista-perfil .campo {
+    text-align: left;
+}
+
+.zona-peligro {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid #E6EBF5;
+    text-align: left;
+}
+.zona-peligro h3 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    color: #B3261E;
+}
+.zona-peligro p {
+    margin: 0 0 12px;
+    font-size: 0.8rem;
+    color: var(--texto-label);
+}
+.btn-peligro {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #B3261E;
+    border-radius: 8px;
+    background: white;
+    color: #B3261E;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-peligro:hover {
+    background: #FDECEC;
+}
+.btn-peligro:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Comunidad aún no disponible: se ve apagado, sin color extra */
+.tile-dashboard:disabled {
+    color: #9A9AA0;
+    cursor: default;
+    transform: none;
+}
+
+/* --- ICONOS DE LÍNEA --- */
+.icono {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tile-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-volver,
+.btn-con-icono {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-con-icono {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+}
+
+
+/* =====================================================================
+   TEMA MINIMALISTA
+   Sin degradados ni pasteles: fondo liso, texto gris oscuro, bordes finos
+   y un solo acento (casi negro). Para volver al diseño anterior, basta con
+   borrar todo este bloque.
+   ===================================================================== */
+:root {
+    --btn-color: #EDEDEB;
+    --texto-label: #6B6B6B;
+    --texto-oscuro: #1F1F1F;
+    --tema-fondo: #FAFAF8;
+    --tema-fondo-alt: #F1F1EF;
+    --tema-borde: #E3E3E0;
+    --tema-acento: #1F1F1F;
+}
+
+/* Fondos lisos (el logo central sigue alternando entre dos tonos) */
+.perfil-trans { background: var(--tema-fondo); }
+.perfil-nb    { background: var(--tema-fondo-alt); }
+
+/* Marca de agua casi imperceptible y sin el eco rosa */
+.marca-agua-fondo {
+    color: #000;
+    opacity: 0.03;
+}
+.marca-agua-fondo span::after {
+    display: none;
+}
+
+/* Tarjetas y paneles: borde fino en vez de sombra */
+.tarjeta-login,
+#vista-dashboard,
+.panel-recursos {
+    background: #fff;
+    border: 1px solid var(--tema-borde);
+    box-shadow: none !important;
+}
+
+/* Campos */
+input,
+.custom-select {
+    border: 1px solid var(--tema-borde) !important;
+}
+input:focus,
+.custom-select:focus {
+    outline: none;
+    border-color: var(--tema-acento) !important;
+}
+
+/* Botón principal: oscuro y plano */
+.btn-sign-in {
+    background-color: var(--tema-acento);
+    color: #fff;
+}
+.btn-sign-in:hover:not(:disabled) {
+    background-color: #000;
+}
+
+/* Botones secundarios y fichas */
+.tile-dashboard,
+.btn-volver {
+    background: var(--tema-fondo-alt);
+    color: var(--texto-oscuro);
+}
+.tile-dashboard:hover:not(:disabled) {
+    background: #E8E8E5;
+    transform: none;
+}
+.chip-filtro {
+    border: 1px solid var(--tema-borde);
+    color: var(--texto-oscuro);
+}
+.chip-filtro.activo {
+    background: var(--tema-acento);
+    border-color: var(--tema-acento);
+    color: #fff;
+}
+
+/* Botones sociales y del logo */
+.btn-social {
+    background: #fff;
+    border: 1px solid var(--tema-borde);
+}
+.acceso-biometrico {
+    background: #fff;
+    border: 1px solid var(--tema-borde);
+    box-shadow: none;
+}
+
+/* Barra de progreso: relleno liso, sin degradado ni brillo */
+#barra-color {
+    background: var(--tema-acento) !important;
+    box-shadow: none;
+}
+#barra-color::after {
+    display: none;
+}
+
+/* Tarjetas de recursos y etiquetas */
+.tarjeta-recurso {
+    background: #fff;
+    border: 1px solid var(--tema-borde);
+}
+.recurso-por-confirmar {
+    background: var(--tema-fondo-alt);
+    color: var(--texto-label);
+}
+
+/* Avatar liso */
+#avatar-usuario {
+    border: 1px solid var(--tema-borde) !important;
+}
+
+/* =====================================================================
+   APP: pantallas, menú inferior, registro, calendario y ajustes
+   ===================================================================== */
+
+/* --- Color de fondo según experiencia (mtf | ftm | nb) ---
+   Tonos lisos y muy suaves, en línea con el tema minimalista.
+   Cambia estas variables para ajustar los colores. */
+:root {
+    --fondo-mtf: #FAF0F4;
+    --fondo-ftm: #EEF3F9;
+    --fondo-nb: #F3F0F8;
+}
+#app.tema-mtf { background: var(--fondo-mtf); }
+#app.tema-ftm { background: var(--fondo-ftm); }
+#app.tema-nb  { background: var(--fondo-nb); }
+
+/* --- Estructura de la app --- */
+.shell {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    height: 100dvh;
+}
+.shell-entra {
+    animation: slideUp 0.5s forwards;
+}
+.shell-cabecera {
+    padding: calc(env(safe-area-inset-top, 0px) + 20px) 20px 8px;
+}
+.shell-cabecera h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--texto-oscuro);
+}
+.shell-contenido {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 20px 24px;
+}
+.pantalla[hidden] {
+    display: none;
+}
+
+.nota {
+    margin: 0 0 12px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--texto-label);
+}
+.nota-error {
+    color: #B3261E;
+}
+.nota-guardado {
+    margin-top: 4px;
+    text-align: center;
+    font-size: 0.7rem;
+}
+.vacio {
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    color: var(--texto-label);
+}
+
+/* --- Menú inferior --- */
+.nav-inferior {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid var(--tema-borde);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 4px 12px;
+    border: none;
+    background: none;
+    color: #8A8A8F;
+    font: inherit;
+    font-size: 0.68rem;
+    cursor: pointer;
+}
+.nav-item .icono {
+    width: 22px;
+    height: 22px;
+}
+.nav-item.activo {
+    color: var(--tema-acento);
+    font-weight: 700;
+}
+
+/* --- Botones auxiliares --- */
+.btn-texto {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 4px;
+    border: none;
+    background: none;
+    color: var(--texto-oscuro);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: var(--texto-oscuro);
+    cursor: pointer;
+}
+.btn-icono:hover:not(:disabled) {
+    background: var(--tema-fondo-alt);
+}
+.btn-icono:disabled {
+    color: #C4C4C8;
+    cursor: default;
+}
+.btn-compacto {
+    margin-top: 8px;
+    min-height: 0;
+    padding: 12px 20px;
+}
+.btn-logout {
+    display: flex;
+    margin: 4px auto 14px;
+    color: #6B6B6B;
+}
+
+/* --- Bloques desplegables del registro --- */
+.panel-dia-titulo {
+    margin: 4px 0 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--texto-oscuro);
+}
+.bloque {
+    margin-bottom: 10px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 12px;
+    background: #fff;
+}
+.bloque > summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-oscuro);
+}
+.bloque > summary::-webkit-details-marker {
+    display: none;
+}
+.bloque > summary::after {
+    content: '+';
+    margin-left: auto;
+    font-weight: 400;
+    color: var(--texto-label);
+}
+.bloque[open] > summary::after {
+    content: '\2212';
+}
+.bloque > :not(summary) {
+    margin: 0 16px 16px;
+}
+.bloque-contador:not(:empty) {
+    min-width: 18px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: var(--tema-acento);
+    color: #fff;
+    font-size: 0.68rem;
+    text-align: center;
+}
+
+/* --- Opciones (chips) --- */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.chip {
+    padding: 8px 12px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--texto-oscuro);
+    font: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.chip[aria-pressed="true"] {
+    border-color: var(--tema-acento);
+    background: var(--tema-acento);
+    color: #fff;
+}
+
+textarea.notas {
+    width: calc(100% - 0px);
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--texto-oscuro);
+    font: inherit;
+    font-size: 0.85rem;
+    resize: vertical;
+}
+textarea.notas:focus {
+    outline: none;
+    border-color: var(--tema-acento);
+}
+
+/* --- Hormonas --- */
+.fila-trat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 0;
+    border-top: 1px solid var(--tema-borde);
+}
+.fila-trat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    font-size: 0.85rem;
+}
+.fila-trat-info span {
+    font-size: 0.75rem;
+    color: var(--texto-label);
+}
+.fila-trat-acciones {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-toma {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--texto-oscuro);
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+.btn-toma[aria-pressed="true"] {
+    border-color: var(--tema-acento);
+    background: var(--tema-acento);
+    color: #fff;
+}
+input.input-hora {
+    width: auto;
+    padding: 7px 8px;
+    font-size: 0.78rem;
+}
+.form-trat {
+    padding-top: 8px;
+    border-top: 1px solid var(--tema-borde);
+}
+.form-trat-campos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-trat-botones {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.form-trat-botones .btn-sign-in {
+    width: auto;
+    margin-top: 0;
+}
+
+/* --- Resumen de un día (solo lectura) --- */
+.resumen {
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 12px;
+    background: #fff;
+}
+.resumen dt {
+    margin-top: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--texto-label);
+}
+.resumen dt:first-child {
+    margin-top: 0;
+}
+.resumen dd {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--texto-oscuro);
+}
+.resumen-notas {
+    white-space: pre-wrap;
+}
+
+/* --- Calendario --- */
+.cal-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.cal-mes {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--texto-oscuro);
+}
+.cal-semana,
+.cal-rejilla {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.cal-semana span {
+    padding: 6px 0;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--texto-label);
+}
+.dia {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    aspect-ratio: 1 / 1.05;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--texto-oscuro);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+.dia:disabled {
+    background: transparent;
+    color: #B5B5BA;
+    cursor: default;
+}
+.dia-hoy {
+    border-color: var(--tema-acento);
+}
+.dia-sel {
+    background: var(--tema-acento);
+    color: #fff;
+}
+.dia-marcas {
+    display: flex;
+    gap: 3px;
+    height: 6px;
+}
+.marca {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.marca-registro {
+    background: currentColor;
+}
+.marca-hormona {
+    border: 1.5px solid currentColor;
+}
+.leyenda {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0 18px;
+    font-size: 0.72rem;
+    color: var(--texto-label);
+}
+.leyenda .marca + .marca,
+.leyenda .marca:nth-of-type(2) {
+    margin-left: 8px;
+}
+.leyenda .btn-texto {
+    margin-left: auto;
+}
+
+/* --- Comunidad --- */
+.tarjeta-opcion {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 16px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--texto-oscuro);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.tarjeta-opcion div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.9rem;
+}
+.tarjeta-opcion span {
+    font-size: 0.75rem;
+    color: var(--texto-label);
+}
+.tarjeta-opcion-apagada {
+    color: #9A9AA0;
+    cursor: default;
+}
+
+/* --- Perfil y ajustes --- */
+.perfil-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+.perfil-cabecera h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--texto-oscuro);
+}
+.perfil-cabecera .nota {
+    margin: 2px 0 0;
+}
+.avatar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border: 1px solid var(--tema-borde);
+    border-radius: 50%;
+    background: #E9E9EC;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.avatar img[hidden] {
+    display: none;
+}
+.progreso {
+    margin-bottom: 16px;
+}
+.progreso-textos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 0.72rem;
+    color: var(--texto-label);
+}
+.progreso-pista {
+    height: 6px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #E3E3E0;
+}
+.progreso-pista #barra-color {
+    width: 0;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+
+.ajuste {
+    margin-bottom: 10px;
+    border: 1px solid var(--tema-borde);
+    border-radius: 12px;
+    background: #fff;
+}
+.ajuste > summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-oscuro);
+}
+.ajuste > summary::-webkit-details-marker {
+    display: none;
+}
+.ajuste > summary::after {
+    content: '+';
+    margin-left: auto;
+    font-weight: 400;
+    color: var(--texto-label);
+}
+.ajuste[open] > summary::after {
+    content: '\2212';
+}
+.ajuste-cuerpo {
+    padding: 0 16px 16px;
+}
+.ajuste-cuerpo .campo {
+    margin-bottom: 8px;
+}
+.ajuste-cuerpo .btn-sign-in {
+    margin-top: 8px;
+}
+.ajuste-peligro > summary {
+    color: #B3261E;
+}
+.ajuste-cuerpo [hidden] {
+    display: none;
+}
+
+.check-fila {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    color: var(--texto-oscuro);
+    cursor: pointer;
+}
+.check-fila input {
+    width: auto;
+    margin: 0;
+    accent-color: var(--tema-acento);
+}
+
+.mensaje-error.aviso-ok {
+    background: var(--tema-fondo-alt);
+    color: var(--texto-oscuro);
+}
+
+/* La barra de progreso conserva el acento oscuro del tema minimalista */
+.shell .btn-peligro {
+    margin-top: 8px;
+}

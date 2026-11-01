@@ -1,0 +1,47 @@
+{
+  "app": "transness",
+  "version": 1,
+  "exportado": "2026-11-01T16:48:16.188Z",
+  "registros": {
+    "2026-11-01": {
+      "sel": {
+        "cambios": [
+          "voz",
+          "vello-facial",
+          "vello-corporal",
+          "musculo",
+          "grasa",
+          "olor",
+          "libido",
+          "sudoracion"
+        ],
+        "sangrado": [],
+        "animo": [],
+        "cuerpo": [],
+        "energia": [],
+        "piel": []
+      },
+      "hormonas": {
+        "tmvy2b3s91yp4": {
+          "hora": "17:46",
+          "nombre": "Readron",
+          "dosis": "512",
+          "via": "inyeccion"
+        }
+      },
+      "notas": ""
+    }
+  },
+  "tratamientos": [
+    {
+      "id": "tmvy2b3s91yp4",
+      "nombre": "Readron",
+      "dosis": "512",
+      "via": "inyeccion",
+      "frecuencia": "otra"
+    }
+  ],
+  "ajustes": {
+    "ocultas": []
+  }
+}
